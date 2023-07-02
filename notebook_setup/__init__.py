@@ -23,17 +23,19 @@ def notebook_setup(autoreload=True, background_transparent=True):
 
 
 def notebook_config_plotly_rendering(
-    force_small_file: bool = True, global_renderer: str = None, verbose=True
+    force_small_file: bool = True,
+    global_renderer: str = None,
+    verbose=True,
 ):
     """
     Configures the behavior of Plotly figures in Jupyter notebooks. -> Make small files and render on GitHub.
     Only figures with fig.show() are effected by this configuration.
-    This function monkey patches (modefies at runtime) behavior of fig.show(). Tested with VS Code.
+    This function monkey patches (modifies at runtime) behavior of fig.show(). Tested with VS Code.
 
     Args:
         force_small_file: If True, Plotly figures are not saved inside the notebook.
         global_renderer (str, optional): Specifies a custom global renderer for the figures.
-            - None: Default renderer (depeding on environment)
+            - None: Default renderer (depending on environment)
             - "svg": static vector plot (small file)
             - "png": static raster plot (small file)
             - "notebook"
@@ -72,12 +74,11 @@ def notebook_config_plotly_rendering(
             display(HTML(f"""<span style="color:red">Warning: </span>{msg}"""))
 
     else:
+        if global_renderer:
+            pio.renderers.default = global_renderer
 
         def show(self, *args, **kwargs):
             "Plotly default implementation"
             return pio.show(self, *args, **kwargs)
-
-        if global_renderer:
-            pio.renderers.default = global_renderer
 
     BaseFigure.show = show

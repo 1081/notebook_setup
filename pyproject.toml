@@ -9,7 +9,7 @@ license = "MIT"
 name = "notebook_setup"
 readme = "README.md"
 requires-python = ">=3.7"
-version = "1.0"
+version = "1.1"
 
 dependencies = ["ipython", "ipykernel"]
 
@@ -18,3 +18,11 @@ homepage = "https://github.com/1081/notebook_setup"
 
 [tool.hatch.build.targets.wheel]
 packages = ["notebook_setup"]
+
+[tool.ruff]
+ignore = ["E501", "C408", "PD901"]
+select = ["E", "W", "N", "I", "UP", "F", "B", "C4", "SIM", "TCH", "PD", "NPY", "DTZ"]
+show-fixes = true
+
+[tool.black]
+line-length = 120
