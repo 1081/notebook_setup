@@ -25,7 +25,6 @@ def notebook_setup(autoreload=True, background_transparent=True):
 def notebook_config_plotly_rendering(
     force_small_file: bool = True,
     global_renderer: str = None,
-    verbose=True,
 ):
     """
     Configures the behavior of Plotly figures in Jupyter notebooks. -> Make small files and render on GitHub.
@@ -69,9 +68,8 @@ def notebook_config_plotly_rendering(
                     # raw=True,
                 )
 
-        if verbose and global_renderer:
-            msg = f"""global_renderer="{global_renderer}" has no effect, set force_small_file=False"""
-            display(HTML(f"""<span style="color:red">Warning: </span>{msg}"""))
+        # msg = f"""global_renderer="{global_renderer}" has no effect, set force_small_file=False"""
+        # display(HTML(f"""<span style="color:red">Warning: </span>{msg}"""))
 
     else:
         if global_renderer:
