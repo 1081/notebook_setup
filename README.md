@@ -3,13 +3,15 @@
 Tools to setup and configure jupyter notebooks (ipynb files) with line and cell magic
 
 ## Install
+
 ```bash
-pip install notebook_setup
+pip install notebook_setup2
 ```
 
 ## Usage
+
 ```python
-from notebook_setup import notebook_setup, notebook_config_plotly_rendering
+from notebook_setup2 import notebook_setup, notebook_config_plotly_rendering
 ```
 
 ### Notebook setup
